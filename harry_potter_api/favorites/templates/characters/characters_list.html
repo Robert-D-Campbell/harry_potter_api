@@ -1,4 +1,6 @@
 <h2>Harry Potter Characters</h2>
+<a href="{% url 'favorites_list' %}">Check Out Favs!</a>
+
 {% for character in characters %}
 <form method="POST" action="">
 	{% csrf_token %} {{form}}

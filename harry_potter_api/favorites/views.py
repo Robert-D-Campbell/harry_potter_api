@@ -12,19 +12,21 @@ def characters(request):
 
     characters = requests.get(url.format(key)).json()
     # print(characters)
-    # character_data = {}
+    character_data = []
 
     for character in characters:
 
-        character_data = {
-            "name": character["name"],
-            "house": 'n/a',
-            "blood_status": character["bloodStatus"],
-            "species": character["species"],
-        }
+        character_data.append(
+            {
+                "name": character["name"],
+                "house": character["house"],
+                "blood_status": character["bloodStatus"],
+                "species": character["species"],
+            }
+        )
         print(character_data)
         form = FavoriteForm(initial=character_data)
-    
+
     if request.method == "POST":
         form = FavoriteForm(request.POST)
         if form.is_valid():
