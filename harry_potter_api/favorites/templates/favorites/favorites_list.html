@@ -1,0 +1,9 @@
+<div>
+	<h1>My Favorites</h1>
+</div>
+
+{% for favorite in favorites %}
+<div>
+	<h2><a href="{% url 'favorite_detail' favorite.id %}">{{ favorite.name }}</a></h2>
+</div>
+{% endfor %}
